@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:10
+      - image: circleci/node:10-alpine
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -34,9 +34,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-      - run: npm lint
-      - run: npm test:unit
+      - run: npm run lint
+      - run: npm run test:unit
       
       # build and deploy
-      - run: npm build
+      - run: npm run build
 
