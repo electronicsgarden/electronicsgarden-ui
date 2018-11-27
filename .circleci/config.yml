@@ -38,5 +38,5 @@ jobs:
       - run: yarn run test:unit
       
       # build and deploy
-      - run: run run build
+      - run: yarn run build
 
