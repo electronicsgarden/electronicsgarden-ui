@@ -2,19 +2,17 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
+version: 2.1
+
+executors:
+  my-executor:
+    docker:
+      - image: circleci/node:10-stretch
+    working_directory: ~/repo
+
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:10-stretch
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
+    executor: my-executor
 
     steps:
       - checkout
@@ -40,16 +38,24 @@ jobs:
       # build and deploy
       - run: yarn run build
 
-  deploy:
-    docker:
-      - image: circleci/node:10-stretch
+      # persist the folling paths into the workspace for downstream jobs
+      - persist_to_workspace:
+          # must be absolute path, or relative from working directory
+          root: .
+          # must be relative from root
+          paths:
+            - dist
 
-    working_directory: ~/repo
+  deploy:
+    executor: my-executor
 
     steps:
       - checkout
         # Firebase deploy is a development dependency
       - run: yarn install --production=false
+
+      - attach_workspace:
+          at: .
       - run:
           name: Deploy master to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
