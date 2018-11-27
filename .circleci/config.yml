@@ -47,6 +47,8 @@ jobs:
     working_directory: ~/repo
 
     steps:
+        # Firebase deploy is a development dependency
+      - run: yarn install --production=false
       - run:
           name: Deploy master to Firebase
           command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
