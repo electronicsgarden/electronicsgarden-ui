@@ -51,8 +51,21 @@ jobs:
 
     steps:
       - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dev-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dev-dependencies-
+
         # Firebase deploy is a development dependency
       - run: yarn install --production=false
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dev-dependencies-{{ checksum "package.json" }}
 
       - attach_workspace:
           at: .
