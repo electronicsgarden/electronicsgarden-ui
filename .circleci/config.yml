@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  build-job:
     docker:
       # specify the version you desire here
       - image: circleci/node:10-stretch
@@ -40,3 +40,26 @@ jobs:
       # build and deploy
       - run: yarn run build
 
+  deploy-job:
+    docker:
+      - image: circleci/node:10-stretch
+
+    working_directory: ~/repo
+
+    steps:
+      - run:
+          name: Deploy master to Firebase
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_DEPLOY_TOKEN
+
+workflows:
+  version: 2
+
+   - deploy:
+      jobs:
+        - build-job
+        - deploy-job:
+            requires:
+              - build-job
+            filters:
+              branches:
+                only: master
