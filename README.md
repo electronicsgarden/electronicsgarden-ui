@@ -1,3 +1,4 @@
+[![Known Vulnerabilities](https://snyk.io/test/github/electronicsgarden/electronicsgarden-ui/badge.svg?targetFile=package.json)](https://snyk.io/test/github/electronicsgarden/electronicsgarden-ui?targetFile=package.json)
 # electronicsgarden
 
 ## Using a new GCP Cloud Shell
