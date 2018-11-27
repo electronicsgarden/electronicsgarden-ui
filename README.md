@@ -1,4 +1,5 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/electronicsgarden/electronicsgarden-ui/badge.svg?targetFile=package.json)](https://snyk.io/test/github/electronicsgarden/electronicsgarden-ui?targetFile=package.json)
+[![CircleCI](https://circleci.com/gh/electronicsgarden/electronicsgarden-ui.svg?style=shield)](https://circleci.com/gh/electronicsgarden/electronicsgarden-ui)
 # electronicsgarden
 
 ## Using a new GCP Cloud Shell
