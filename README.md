@@ -2,46 +2,40 @@
 [![CircleCI](https://circleci.com/gh/electronicsgarden/electronicsgarden-ui.svg?style=shield)](https://circleci.com/gh/electronicsgarden/electronicsgarden-ui)
 # electronicsgarden
 
-## Using a new GCP Cloud Shell
+## Using a new environment
+- Set up git username and email
+- Pair Krypton
+- Enable Krypton codesigning
 
-### Install Krypton
-```
-curl https://krypt.co/kr | sh
-```
 
 ## Project setup
 ```
-npm install
+yarn install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+yarn run serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+yarn run build
 ```
 
 ### Lints and fixes files
 ```
-npm run lint
+yarn run lint
 ```
 
 ### Run your end-to-end tests
 ```
-npm run test:e2e
+yarn run test:e2e # Currently broken :(
 ```
 
 ### Run your unit tests
 ```
-npm run test:unit
+yarn run test:unit
 ```
 
 ### Customize configuration
